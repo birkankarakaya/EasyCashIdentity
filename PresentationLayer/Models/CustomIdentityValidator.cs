@@ -2,7 +2,7 @@
 
 namespace PresentationLayer.Models
 {
-	public class CustomerIdentityValidator : IdentityErrorDescriber
+	public class CustomIdentityValidator : IdentityErrorDescriber
 	{
 		public override IdentityError PasswordTooShort(int length)
 		{
