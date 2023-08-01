@@ -8,13 +8,15 @@ namespace PresentationLayer.Controllers
 		[HttpGet]
 		public IActionResult Index(int id)
 		{
+			var value = TempData["Mail"];
+			ViewBag.v = value + " asd";
 			return View();
 		}
 
 		[HttpPost]
 		public IActionResult Index(ConfirmMailViewModel confirmMailViewModel)
 		{
-
+			return View();
 		}
 	}
 }
