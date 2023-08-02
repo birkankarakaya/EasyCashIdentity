@@ -47,7 +47,7 @@ namespace PresentationLayer.Controllers
                 if (result.Succeeded)
                 {
                     MimeMessage mimeMessage = new MimeMessage();
-                    MailboxAddress mailboxAddressFrom = new MailboxAddress("Easy Cash Admin", "karakayabirkan@gmail.com");
+                    MailboxAddress mailboxAddressFrom = new MailboxAddress("Easy Cash Admin", "EmailAddress");
                     MailboxAddress mailboxAddressTo = new MailboxAddress("User", appUser.Email);
 
                     mimeMessage.From.Add(mailboxAddressFrom);
@@ -61,7 +61,7 @@ namespace PresentationLayer.Controllers
 
                     MailKit.Net.Smtp.SmtpClient client = new MailKit.Net.Smtp.SmtpClient();
                     client.Connect("smtp.gmail.com", 587, false);
-                    client.Authenticate("karakayabirkan@gmail.com", "bvondqlgwhnykjhd");
+                    client.Authenticate("EmailAddress", "Password");
                     client.Send(mimeMessage);
                     client.Disconnect(true);
 
@@ -77,7 +77,6 @@ namespace PresentationLayer.Controllers
                         ModelState.AddModelError("", item.Description);
                     }
                 }
-
             }
 
             return View();
