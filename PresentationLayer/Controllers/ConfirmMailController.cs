@@ -24,20 +24,10 @@ namespace PresentationLayer.Controllers
         public async Task<IActionResult> Index(ConfirmMailViewModel confirmMailViewModel)
         {
             var user = await _userManager.FindByEmailAsync(confirmMailViewModel.Mail);
-            if (user != null)
+
+            if (user.ConfirmCode == confirmMailViewModel.ConfirmCode)
             {
-                if (user.ConfirmCode == confirmMailViewModel.ConfirmCode)
-                {
-                    return RedirectToAction("Index", "MyProfile");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Doğrulama kodu yanlış.");
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Kullanıcı bulunamadı.");
+                return RedirectToAction("Index", "MyProfile");
             }
 
             return View();
